@@ -52,4 +52,5 @@ def student():
 
 @app.route('/addDrop')
 def addDrop():
-    return render_template('addDrop.html', classDataBase=ClassDataBase)
+    add_form = AddClass()
+    return render_template('addDrop.html', classDataBase=ClassDataBase, form=add_form)
