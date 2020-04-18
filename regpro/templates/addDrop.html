@@ -13,3 +13,24 @@
 </li>
 
 {% endblock nav %}
+<!-- Class list -->
+<div style="overflow: scroll">
+
+
+
+</div>
+<!--Text, add, drop. Will be using CRN-->
+<div>
+    <form method="POST" action="" autocomplete="off">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.AddClass.label() }}
+            {{ form.AddClass() }}
+        </div>
+    </form>
+</div>
+
+<!-- preview only need CRN and CLASS NAME -->
+<div>
+
+</div>
