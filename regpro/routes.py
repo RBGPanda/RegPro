@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from regpro import app
-from regpro.forms import RegistrationForm, LoginForm
+from regpro.forms import RegistrationForm, LoginForm, AddClass
 from regpro.models import User
 import sys
 from BackEnd import RegPro 
@@ -48,4 +48,5 @@ def student():
 
 @app.route('/addDrop')
 def addDrop():
-    return render_template('addDrop.html')
+    add_form = AddClass()
+    return render_template('addDrop.html', form=add_form)
