@@ -18,8 +18,8 @@
 
 <!-- Class list -->
 <div style="overflow: scroll">
-    {% for course in ClassDataBase %}
-    <p>course.getName() : course.getCRN()</p><br>
+    {% for course in classDataBase.getAllClasses() %}
+    <p>{{ course.getName() }}: {{ course.getCRN() }}</p><br>
     {% endfor %}
 
 
