@@ -29,3 +29,8 @@ def login():
         return redirect(url_for('home'))
 
     return render_template('login.html', page='Login', form=login_form)
+
+
+@app.route('/student')
+def student():
+    return render_template('student.html')
