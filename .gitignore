@@ -1,3 +1,5 @@
 /reg_env
 /.vscode
 /regpro/__pycache__
+/.DS_Store
+/BackEnd/__pycache__

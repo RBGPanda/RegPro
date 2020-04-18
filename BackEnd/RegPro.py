@@ -1,17 +1,41 @@
 import datetime
 import sys
+import pickle
+
+def writePickle(file, obj):
+	pickle.dump(obj, open(file, "wb"))
+
+def readPickle(file):
+	return pickle.load(open(file, "rb"))
 
 class User(object):
-	ID #String(user email)
-	priorityLevel #int(0-3)
+	ID = None #String(user email)
+	password = None
+	priorityLevel = None #int(0-3)
 
-	def __init__(self, ID, Priority):
-	#TODO:
-	# Set the attributes to their initial values.
-	# self.ID = ID
-	# self.priorityLevel = priorityLevel
-	self.ID = ID
-	self.priorityLevel = priorityLevel
+	def __init__(self, ID, password, priorityLevel):
+		#TODO:
+		# Set the attributes to their initial values.
+		# self.ID = ID
+		# self.priorityLevel = priorityLevel
+		self.ID = ID
+		self.priorityLevel = priorityLevel
+		self.password = password
+
+	def getPassword(self):
+		#TODO:
+		# return self.ID
+		return self.password
+
+	def setPassword(self, ID):
+		#TODO:
+		# Set the ID attribute for the user
+		# self.ID = ID
+		# Return True if ID was set successfully otherwise False
+		self.password = password
+		if(self.password == password):
+			return True
+		return False
 
 	def getID(self):
 		#TODO:
@@ -44,17 +68,17 @@ class User(object):
 		return False
 
 class Student(User):
-	schedule #(List of Class objects)
-	waitlist #(List of Class objects)
-	registrationStatus #(Boolean) set to False initially
-	completedClasses #(List of Class objects)
-	registeredHours #(int)
+	schedule = [] #(List of Class objects)
+	waitlist = []#(List of Class objects)
+	registrationStatus = False #(Boolean) set to False initially
+	completedClasses  = []#(List of Class objects)
+	registeredHours = 0#(int)
 	MAX_HOURS = 18
 
-	def __init__(self, ID, Priority):
+	def __init__(self, ID, password, priorityLevel):
 		#TODO:
 		# User.__init__(ID, priorityLevel)
-		User.__init__(ID, priorityLevel)
+		User.__init__(self, ID, password, priorityLevel)
 
 	def addClass(self, newClass):
 		#TODO:
@@ -215,10 +239,10 @@ class Student(User):
 
 class Administrator(User):
 
-	def __init__(self, ID, priorityLevel):
+	def __init__(self, ID, password, priorityLevel):
 		#TODO:
 		# User.__init__(ID, priorityLevel)
-		User.__init__(ID, priorityLevel)
+		User.__init__(self, ID, password, priorityLevel)
 
 	def openRegistration(self, classDataBase):
 		#TODO:
@@ -247,10 +271,10 @@ class Administrator(User):
 
 class Advisor(User):
 
-	def __init__(self, ID, priorityLevel):
+	def __init__(self, ID, password, priorityLevel):
 		#TODO:
 		# User.__init__(ID, priorityLevel)
-		User.__init__(ID, priorityLevel)
+		User.__init__(self, ID, password, priorityLevel)
 
 	def updateStudentRegistrationStatus(self, student, status, userDataBase):
 		#TODO:
@@ -266,17 +290,20 @@ class Advisor(User):
 		#TODO:
 		# If student is in UserDataBase.getStudents() send student an email advising them
 		# Return True if successful False otherwise
+		return None
 
 	def requestPermissions(self, administrator, newPermission):
 		#TODO:
 		# Send email to administrator requesting newPermission
 		# Return True if successful False otherwise
+		return None
 
 class Instructor(User):
 
-	def __init__(self, ID, priorityLevel):
+	def __init__(self, ID, password, priorityLevel):
 		#TODO:
 		# User.__init__(ID, priorityLevel)
+		User.__init__(self, ID, password, priorityLevel)
 
 	def allowOverRegistration(student, selectedClass, userDataBase, classDataBase):
 		#TODO:
@@ -293,13 +320,14 @@ class Instructor(User):
 		#TODO:
 		# Send email to administrator requesting newPermission
 		# Return True if successful False otherwise
+		return None
 
 class TimeSlot(object):
-	term #(String) "fall", "spring" or "summer"
-	year #(int) i.e. 2020
-	startTime #(int) military time between 0 and 2400
-	endTime #(int) military time between 0 and 2400
-	daysOfWeek #(list of strings) i.e. ['M', 'T', 'W', 'TH', 'F']
+	# term #(String) "fall", "spring" or "summer"
+	# year #(int) i.e. 2020
+	# startTime #(int) military time between 0 and 2400
+	# endTime #(int) military time between 0 and 2400
+	# daysOfWeek #(list of strings) i.e. ['M', 'T', 'W', 'TH', 'F']
 
 	def __init__(self, term, year,  startTime, endTime, daysOfWeek):
 		self.term = term
@@ -324,17 +352,19 @@ class TimeSlot(object):
 		return self.daysOfWeek
 
 class Class(object):
-	people #(list of User objects)
-	registrationStatus #(boolean) initially set to False
-	hours #(int)
-	startDate #(python datetime object)
-	endDate #(python datetime object)
-	timeSlot #(TimeSlot object)
-	waitlistPeople #(list of User objects)
-	totalSeats #(int) = number of available seats for this class
-	preReqs #(list of Class objects) = other classes required to take this class
+	people = [] #(list of User objects)
+	registrationStatus = False#(boolean) initially set to False
+	hours  = None #(int)
+	startDate = None #(python datetime object)
+	endDate = None #(python datetime object)
+	timeSlot = None #(TimeSlot object)
+	waitlistPeople = [] #(list of User objects)
+	totalSeats = None #(int) = number of available seats for this class
+	preReqs = [] #(list of Class objects) = other classes required to take this class
+	crn = None
+	name = None
 
-	def __init__(self, hours, startDate, endDate, timeSlot, totalSeats, preReqs, instructor, registrationStatus=False):
+	def __init__(self, hours, startDate, endDate, timeSlot, totalSeats, preReqs, instructor, crn, name, registrationStatus=False):
 		#TODO:
 		# self.hours = hours
 		# self.startDate = startDate
@@ -350,6 +380,8 @@ class Class(object):
 		self.totalSeats = totalSeats
 		self.preReqs = preReqs
 		self.registraionStatus = registrationStatus
+		self.crn = crn
+		self.name = name
 
 	def isFull(self):
 		#TODO:
@@ -357,6 +389,12 @@ class Class(object):
 		if len(self.people) == self.totalSeats:
 			return True
 		return False
+
+	def getName(self):
+		return self.name
+
+	def getCRN(self):
+		return self.crn
 
 	def getPeople(self):
 		#TODO:
@@ -379,7 +417,7 @@ class Class(object):
 		if user in self.people:
 			self.people.remove(user)
 			return True
-		else
+		else:
 			return False
 
 	def updateRegistrationStatus(self, status):
@@ -454,9 +492,9 @@ class Class(object):
 		self.totalSeats = self.totalSeats - 1
 
 class ClassDataBase(object):
-	classes #(List of Class objects)
+	classes = [] #(List of Class objects)
 
-	def __inti__(self, classes):
+	def __init__(self, classes = list()):
 		#TODO:
 		# Self.classes = classes
 		self.classes = classes
@@ -484,10 +522,10 @@ class ClassDataBase(object):
 		# Return self.classes
 		return self.classes
 
-class UserDataBase(object)
-	users #(List of User objects)
+class UserDataBase(object):
+	users = [] #(List of User objects)
 
-	def __init__(self, users):
+	def __init__(self, users = list()):
 		#TODO:
 		# Self.users = users
 		self.users = users

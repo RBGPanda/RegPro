@@ -13,6 +13,9 @@
 </li>
 
 {% endblock nav %}
+
+{% block content %}
+
 <!-- Class list -->
 <div style="overflow: scroll">
 
@@ -20,12 +23,14 @@
 
 </div>
 <!--Text, add, drop. Will be using CRN-->
-<div>
+<div style="padding-top: 50px">
     <form method="POST" action="" autocomplete="off">
         {{ form.hidden_tag() }}
         <div>
-            {{ form.AddClass.label() }}
-            {{ form.AddClass() }}
+            {{ form.crn.label() }}
+            {{ form.crn() }}
+            {{ form.add() }}
+            {{ form.drop() }}
         </div>
     </form>
 </div>
