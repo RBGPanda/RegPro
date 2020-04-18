@@ -1,9 +1,11 @@
 from BackEnd import RegPro
 import datetime
 
-userDataBase = RegPro.readPickle("UserDataBase.p")
+userDataBase = RegPro.UserDataBase()
 instructor = RegPro.Instructor("szs0117@auburn.edu", "toor", 1)
+student1 = RegPro.Student("mab0183@auburn.edu", "toor", 0)
 userDataBase.addUser(instructor)
+userDataBase.addUser(student1)
 
 classDataBase = RegPro.ClassDataBase()
 startDate = datetime.datetime(2020, 5, 20)
@@ -20,5 +22,5 @@ classDataBase.addClass(class1)
 classDataBase.addClass(class2)
 classDataBase.addClass(class3)
 
-RegPro.writePickle("UserDataBase.p", classDataBase)
+RegPro.writePickle("UserDataBase.p", userDataBase)
 RegPro.writePickle("ClassDataBase.p", classDataBase)
