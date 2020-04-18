@@ -34,3 +34,8 @@ def login():
 @app.route('/student')
 def student():
     return render_template('student.html')
+
+
+@app.route('/addDrop')
+def addDrop():
+    return render_template('addDrop.html')
