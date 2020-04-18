@@ -21,3 +21,8 @@ typed-ast==1.4.1
 Werkzeug==1.0.1
 wrapt==1.11.2
 WTForms==2.2.1
+
+How to add a page:
+1) Go to routes.py and copy the /home route all the way to the return statement (3 lines of code)
+2) Paste this at the bottom of routes and add name of your page as the new route and change the function name to match
+3) Create your html document in templates (Note: Flask allows for inheritance, so you can reuse html code)

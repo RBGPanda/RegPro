@@ -41,6 +41,20 @@ def login():
     return render_template('login.html', page='Login', form=login_form)
 
 
+<<<<<<< HEAD
 @app.route('/student')
 def student():
     return render_template('student.html')
+=======
+    return render_template('login.html', page='Login', form=login_form)
+
+
+@app.route('/student')
+def student():
+    return render_template('student.html')
+
+
+@app.route('/addDrop')
+def addDrop():
+    return render_template('addDrop.html')
+>>>>>>> 01cc6864bbce3d2570a74e372ddc1231efc225f9
