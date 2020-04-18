@@ -30,3 +30,10 @@ class LoginForm(FlaskForm):
                     ])
 
     submit = SubmitField("Login")
+
+class AddClass(FlaskForm):
+    crn = StringField("CRN", validators=[DataRequired()])
+
+    add = SubmitField("Add")
+
+    drop = SubmitField("Drop")
