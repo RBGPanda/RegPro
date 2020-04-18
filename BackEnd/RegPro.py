@@ -362,8 +362,9 @@ class Class(object):
 	totalSeats = None #(int) = number of available seats for this class
 	preReqs = [] #(list of Class objects) = other classes required to take this class
 	crn = None
+	name = None
 
-	def __init__(self, hours, startDate, endDate, timeSlot, totalSeats, preReqs, instructor, crn, registrationStatus=False):
+	def __init__(self, hours, startDate, endDate, timeSlot, totalSeats, preReqs, instructor, crn, name, registrationStatus=False):
 		#TODO:
 		# self.hours = hours
 		# self.startDate = startDate
@@ -380,6 +381,7 @@ class Class(object):
 		self.preReqs = preReqs
 		self.registraionStatus = registrationStatus
 		self.crn = crn
+		self.name = name
 
 	def isFull(self):
 		#TODO:
@@ -387,6 +389,9 @@ class Class(object):
 		if len(self.people) == self.totalSeats:
 			return True
 		return False
+
+	def getName(self):
+		return self.name
 
 	def getCRN(self):
 		return self.crn
@@ -489,7 +494,7 @@ class Class(object):
 class ClassDataBase(object):
 	classes = [] #(List of Class objects)
 
-	def __init__(self, classes):
+	def __init__(self, classes = list()):
 		#TODO:
 		# Self.classes = classes
 		self.classes = classes
