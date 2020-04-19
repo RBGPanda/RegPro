@@ -37,3 +37,5 @@ class AddClass(FlaskForm):
     add = SubmitField("Add")
 
     drop = SubmitField("Drop")
+
+
