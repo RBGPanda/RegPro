@@ -17,9 +17,32 @@
 {% block content %}
 
 <!-- Class list -->
+<h1 style="margin-top: 2rem; margin-bottom: 2rem">Available Courses</h1>
 <div style="overflow: scroll">
+    {% for course in classDataBase.getAllClasses() %}
+    {% set startTime = course.getTimeSlot().getStartTime() %}
+    {% set endTime = course.getTimeSlot().getEndTime() %}
+    {% if startTime >= 1300 %}
+        {% set startTime = startTime - 1200 %}
+        {% set startTime = (startTime, "")|join("") %}
+        {% set startTime = (startTime[:-2], ":", startTime[-2:], "p.m.")|join("") %}
+    {% else %}
+        {% set startTime = (startTime, "")|join("") %}
+        {% set startTime = (startTime[:-2], ":", startTime[-2:], "a.m.")|join("") %}
+    {% endif %}
 
-{% block content %}
+    {% if endTime >= 1300 %}
+        {% set endTime = endTime - 1200 %}
+        {% set endTime = (endTime, "")|join("") %}
+        {% set endTime = (endTime[:-2], ":", endTime[-2:], "p.m.")|join("") %}
+    {% else %}
+        {% set endTime = (endTime, "")|join("") %}
+        {% set endTime = (endTime[:-2], ":", endTime[-2:], "a.m.")|join("") %}
+    {% endif %}
+
+    <p>{{ course.getName() }}: {{ course.getCRN() }} ({{ "".join(course.getTimeSlot().getDaysOfWeek()) }}@{{startTime}}-{{endTime}})</p><br>
+    {% endfor %}
+
 
 </div>
 <!--Text, add, drop. Will be using CRN-->
@@ -35,10 +58,20 @@
     </form>
 </div>
 
+<!-- Student schedule -->
+<h1 style="margin-top: 2rem; margin-bottom: 2rem">My Schedule</h1>
+<div style="overflow: scroll">
 
+    
+    {% if form.add.data %}
+        {% for course in classDataBase.getAllClasses() %}
+            {% if course.getCRN == form.crn.data %}
+                <p>{{ course.getName() }}: {{ course.getCRN() }}</p><br>
+            {% endif %}
+        {% endfor %}
+    {% elif form.drop.data %}
+    {% endif %}
 
-<!-- preview only need CRN and CLASS NAME -->
-<div>
 
 </div>
 

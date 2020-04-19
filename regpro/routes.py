@@ -7,7 +7,9 @@ from BackEnd import RegPro
 
 sys.path.append("..")
 UserDataBase = RegPro.readPickle("UserDataBase.p")
-# ClassDataBase = RegPro.readPickle("ClassDataBase.p")
+ClassDataBase = RegPro.readPickle("ClassDataBase.p")
+currUser = None
+
 
 @app.route('/')
 @app.route('/home')
@@ -36,17 +38,20 @@ def login():
         users = UserDataBase.getAllUsers()
         for user in users:
             if user.getID() == username and user.getPassword() == password:
-               return redirect(url_for('home'))
+                currUser = user
+                return redirect(url_for('student'))
 
     return render_template('login.html', page='Login', form=login_form)
 
 
 @app.route('/student')
 def student():
-    return render_template('student.html')
+    user = currUser
+    return render_template('student.html', stu = user)
 
 
-@app.route('/addDrop')
+@app.route('/addDrop', methods=['GET', 'POST'])
 def addDrop():
     add_form = AddClass()
-    return render_template('addDrop.html', form=add_form)
+    flash(f'{add_form.data}, {add_form.crn.data}')
+    return render_template('addDrop.html', classDataBase=ClassDataBase, form=add_form)
