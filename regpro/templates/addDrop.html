@@ -17,6 +17,7 @@
 {% block content %}
 
 <!-- Class list -->
+<h1 style="margin-top: 2rem; margin-bottom: 2rem">Available Courses</h1>
 <div style="overflow: scroll">
     {% for course in classDataBase.getAllClasses() %}
     <p>{{ course.getName() }}: {{ course.getCRN() }}</p><br>
@@ -37,8 +38,20 @@
     </form>
 </div>
 
-<!-- preview only need CRN and CLASS NAME -->
-<div>
+<!-- Student schedule -->
+<h1 style="margin-top: 2rem; margin-bottom: 2rem">My Schedule</h1>
+<div style="overflow: scroll">
+
+    
+    {% if form.add.data %}
+        {% for course in classDataBase.getAllClasses() %}
+            {% if course.getCRN == form.crn.data %}
+                <p>{{ course.getName() }}: {{ course.getCRN() }}</p><br>
+            {% endif %}
+        {% endfor %}
+    {% elif form.drop.data %}
+    {% endif %}
+
 
 </div>
 
