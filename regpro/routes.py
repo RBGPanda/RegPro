@@ -50,7 +50,8 @@ def student():
     return render_template('student.html', stu = user)
 
 
-@app.route('/addDrop')
+@app.route('/addDrop', methods=['GET', 'POST'])
 def addDrop():
     add_form = AddClass()
+    flash(f'{add_form.data}, {add_form.crn.data}')
     return render_template('addDrop.html', classDataBase=ClassDataBase, form=add_form)
