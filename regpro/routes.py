@@ -55,3 +55,29 @@ def addDrop():
     add_form = AddClass()
     flash(f'{add_form.data}, {add_form.crn.data}')
     return render_template('addDrop.html', classDataBase=ClassDataBase, form=add_form)
+
+@app.route('/Instructor')
+def Instructor():
+    user = currUser
+    return render_template('Instructor.html', stu = user)
+
+@app.route('/InstructorClass')
+def InstructorClass():
+    user = currUser
+    return render_template('InstructorClass.html', stu = user)
+
+
+@app.route('/Advisor')
+def Advisor():
+    user = currUser
+    return render_template('Advisor.html', stu = user)
+
+@app.route('/AdvisorStudent')
+def AdvisorStudent():
+    user = currUser
+    return render_template('AdvisorStudent.html', stu = user)
+
+@app.route('/Admin')
+def Admin():
+    user = currUser
+    return render_template('Admin.html', stu = user)
