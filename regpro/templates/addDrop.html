@@ -19,7 +19,27 @@
 <!-- Class list -->
 <div style="overflow: scroll">
     {% for course in classDataBase.getAllClasses() %}
-    <p>{{ course.getName() }}: {{ course.getCRN() }}</p><br>
+    {% set startTime = course.getTimeSlot().getStartTime() %}
+    {% set endTime = course.getTimeSlot().getEndTime() %}
+    {% if startTime >= 1300 %}
+        {% set startTime = startTime - 1200 %}
+        {% set startTime = (startTime, "")|join("") %}
+        {% set startTime = (startTime[:-2], ":", startTime[-2:], "p.m.")|join("") %}
+    {% else %}
+        {% set startTime = (startTime, "")|join("") %}
+        {% set startTime = (startTime[:-2], ":", startTime[-2:], "a.m.")|join("") %}
+    {% endif %}
+
+    {% if endTime >= 1300 %}
+        {% set endTime = endTime - 1200 %}
+        {% set endTime = (endTime, "")|join("") %}
+        {% set endTime = (endTime[:-2], ":", endTime[-2:], "p.m.")|join("") %}
+    {% else %}
+        {% set endTime = (endTime, "")|join("") %}
+        {% set endTime = (endTime[:-2], ":", endTime[-2:], "a.m.")|join("") %}
+    {% endif %}
+
+    <p>{{ course.getName() }}: {{ course.getCRN() }} ({{ "".join(course.getTimeSlot().getDaysOfWeek()) }}@{{startTime}}-{{endTime}})</p><br>
     {% endfor %}
 
 
