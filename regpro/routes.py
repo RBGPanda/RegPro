@@ -89,3 +89,32 @@ def coursemanager():
 def logout():
     logout_user()
     return render_template('home.html')
+
+
+
+
+@app.route('/Instructor')
+def Instructor():
+    user = currUser
+    return render_template('Instructor.html', stu = user)
+
+@app.route('/InstructorClass')
+def InstructorClass():
+    user = currUser
+    return render_template('InstructorClass.html', stu = user)
+
+
+@app.route('/Advisor')
+def Advisor():
+    user = currUser
+    return render_template('Advisor.html', stu = user)
+
+@app.route('/AdvisorStudent')
+def AdvisorStudent():
+    user = currUser
+    return render_template('AdvisorStudent.html', stu = user)
+
+@app.route('/Admin')
+def Admin():
+    user = currUser
+    return render_template('Admin.html', stu = user)
