@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from regpro import app, db
-from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm
+from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm, ChangePermissions
 from regpro.models import User, Course, courses
 from flask_login import login_user, current_user, logout_user
 
@@ -10,6 +10,15 @@ from flask_login import login_user, current_user, logout_user
 def home():
     return render_template('home.html')
 
+@app.route('/changePermissions', methods=['GET', 'POST'])
+def changePermissions():
+    form = ChangePermissions()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        user.permissions = form.permissions.data
+        db.session.commit()
+        return redirect(url_for('administrator'))
+    return render_template('changePermissions.html', page='change-permissions', form=form)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -19,7 +28,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         flash(f'Account created for {form.username.data}', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('administrator'))
 
     return render_template('signup.html', page='Sign-up', form=form)
 

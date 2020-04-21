@@ -3,6 +3,26 @@ from wtforms import SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Length, ValidationError
 from regpro.models import User
 
+class ChangePermissions(FlaskForm):
+
+    permissions = SelectField("Permissions", 
+        choices=[("student", "Student"), ("instructor", "Instructor"), ("advisor", "Advisor"), ("administrator", "Administrator")],
+        default=1,
+        coerce=str)
+
+    username = StringField("Username", 
+        validators=[DataRequired(), 
+                    Length(min=1, max=20, message="Username must be between 3 and 20 characters")
+                    ])
+
+    submit = SubmitField("Change Permission")
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if not user:
+            raise ValidationError("Username does not exist")
+
+
 class RegistrationForm(FlaskForm):
 
     permissions = SelectField("Permissions", 
