@@ -12,13 +12,14 @@ def home():
 
 @app.route('/changePermissions', methods=['GET', 'POST'])
 def changePermissions():
+    users = User.query.all()
     form = ChangePermissions()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         user.permissions = form.permissions.data
         db.session.commit()
         return redirect(url_for('administrator'))
-    return render_template('changePermissions.html', page='change-permissions', form=form)
+    return render_template('changePermissions.html', page='change-permissions', form=form, users=users)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
