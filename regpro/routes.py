@@ -92,6 +92,7 @@ def logout():
     return render_template('home.html')
 
 
+currUser = None
 
 
 @app.route('/Instructor')
@@ -100,7 +101,7 @@ def Instructor():
     return render_template('Instructor.html', stu = user)
 
 @app.route('/InstructorClass')
-def InstructorClass():
+def InstructorClass(): 
     user = currUser
     return render_template('InstructorClass.html', stu = user)
 
