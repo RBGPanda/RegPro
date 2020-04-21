@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+
+
+
+{% block nav %}
+
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('Advisor') }}">Advisor Home<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('AdvisorStudent') }}">Advisor Studnet<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('home') }}">logout<span class="sr-only">(current)</span></a>
+</li>
+
+{% endblock nav %}
+
+{% block content %}
+<!-- Student schedule-->
+<div>
+
+<p>Any notification Advisor might have</p>
+<div style="padding: 10% 10% 10% 10%; border: 1px solid black;">
+<p>notification about student goes here</p>
+</div>
+</div>
+{% endblock content %}
