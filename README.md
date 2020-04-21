@@ -6,6 +6,7 @@ astroid==2.3.3
 click==7.1.1
 colorama==0.4.3
 Flask==1.1.2
+Flask-Login==0.5.0
 Flask-SQLAlchemy==2.4.1
 Flask-WTF==0.14.3
 isort==4.3.21
@@ -15,6 +16,9 @@ lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 pylint==2.4.4
+pylint-flask==0.6
+pylint-flask-sqlalchemy==0.2.0
+pylint-plugin-utils==0.6
 six==1.14.0
 SQLAlchemy==1.3.16
 typed-ast==1.4.1
