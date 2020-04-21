@@ -1,24 +1,22 @@
 {% extends "template.html" %}
 
+
 {% block nav %}
-
 <li class="nav-item active">
-    <a class="nav-link" href="{{ url_for('student') }}">Student Home<span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="{{ url_for('coursemanager') }}">Course Manager<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item active">
-    <a class="nav-link" href="{{ url_for('addDrop') }}">add/drop<span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="{{ url_for('logout') }}">Logout<span class="sr-only">(current)</span></a>
 </li>
-<li class="nav-item active">
-    <a class="nav-link" href="{{ url_for('home') }}">logout<span class="sr-only">(current)</span></a>
-</li>
-
 {% endblock nav %}
 
+
 {% block content %}
-<!-- Student schedule-->
-<div>
-
-
-
+<h1 style="margin-top: 2rem; margin-top: 6rem;">Current Schedule</h1>
+<div style="overflow: scroll; background-color: lightgray;">
+    <strong>Course (CRN) | Timeslot</strong>
+    {% for course in current_user.courses %}
+        <p>{{ course.title }} ({{ course.crn }}) | {{ course.days }}@{{ course.time }}</p><br>
+    {% endfor %}
 </div>
 {% endblock content %}
