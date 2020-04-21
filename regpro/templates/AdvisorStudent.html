@@ -1,0 +1,67 @@
+{% extends "template.html" %}
+
+{% block nav %}
+
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('Advisor') }}">Advisor Home<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('AdvisorStudent') }}">Advisor Studnet<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('home') }}">logout<span class="sr-only">(current)</span></a>
+</li>
+
+{% endblock nav %}
+
+{% block content %}
+<!-- Student schedule-->
+<div>
+    <div style="padding-bottom: 10%;">
+    <table>
+        <thead><tr><th>Name</th><th>Status</th></tr></thead>
+        <tbody>
+        <tr><td>Byeonghyeon Choi</td><td>Approved</td></tr>
+        <tr><td>Cole Beck</td><td>Approved</td></tr>
+        <tr><td>Austin Bush</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        <tr><td>Null</td><td>Approved</td></tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <thead><tr><th>Name</th><th>Status</th></tr></thead>
+            <tbody>
+            <tr><td>student1</td><td>Waiting Approval</td></tr>
+            <tr><td>student2</td><td>Waiting Approval</td></tr>
+            <tr><td>student3</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            <tr><td>Null</td><td>Waiting Approval</td></tr>
+            </tbody>
+            </table>
+    </div>
+
+</div>
+{% endblock content %}

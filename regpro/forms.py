@@ -70,3 +70,6 @@ class CourseRegistrationForm(FlaskForm):
     add = SubmitField("Add")
 
     drop = SubmitField("Drop")
+
+
+
