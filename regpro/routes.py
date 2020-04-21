@@ -51,6 +51,11 @@ def student():
     return render_template('student.html', page='Student', courses=courses)
 
 
+@app.route('/administrator')
+def administrator():
+    return render_template('administrator.html', page='Administrator')
+
+
 @app.route('/coursemanager', methods=['GET', 'POST'])
 def coursemanager():
     form = CourseRegistrationForm()
