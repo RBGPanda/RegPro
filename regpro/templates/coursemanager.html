@@ -1,0 +1,44 @@
+{% extends "template.html" %}
+
+
+{% block nav %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('student') }}">Student Home<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('logout') }}">logout<span class="sr-only">(current)</span></a>
+</li>
+{% endblock nav %}
+
+
+{% block content %}
+<h1 style="margin-top: 2rem; margin-bottom: 2rem">Available Courses</h1>
+<div style="overflow: scroll; background-color: lightgray; margin-bottom:2rem;">
+    <strong>Course (CRN) | Timeslot</strong>
+    {% for course in courses %}
+        <p>{{ course.title }} ({{ course.crn }}) | {{ course.days }}@{{ course.time }}</p><br>
+    {% endfor %}
+</div>
+
+<div>
+    <form method="POST" action="" autocomplete="off">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.crn.label() }}
+            {{ form.crn() }}
+        </div>
+        <div>
+            {{ form.add() }}
+            {{ form.drop() }}
+        </div>
+    </form>
+</div>
+
+<h1 style="margin-top: 2rem; margin-top: 6rem;">Added Courses</h1>
+<div style="overflow: scroll; background-color: lightgray;">
+    <strong>Course (CRN) | Timeslot</strong>
+    {% for course in current_user.courses %}
+        <p>{{ course.title }} ({{ course.crn }}) | {{ course.days }}@{{ course.time }}</p><br>
+    {% endfor %}
+</div>
+{% endblock content %}
