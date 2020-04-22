@@ -95,29 +95,33 @@ def logout():
 currUser = None
 
 
-@app.route('/Instructor')
+@app.route('/instructor')
 def Instructor():
     user = currUser
     return render_template('Instructor.html', stu = user)
 
+<<<<<<< HEAD
 @app.route('/InstructorClass', methods=['GET', 'POST'])
+=======
+@app.route('/instructorClass')
+>>>>>>> upstream/master
 def InstructorClass(): 
     form = editCourseTime()
     user = currUser
     return render_template('InstructorClass.html', stu = user, form=form)
 
 
-@app.route('/Advisor')
+@app.route('/advisor')
 def Advisor():
     user = currUser
     return render_template('Advisor.html', stu = user)
 
-@app.route('/AdvisorStudent')
+@app.route('/advisorStudent')
 def AdvisorStudent():
     user = currUser
     return render_template('AdvisorStudent.html', stu = user)
 
-@app.route('/Admin')
+@app.route('/admin')
 def Admin():
     user = currUser
     return render_template('Admin.html', stu = user)
