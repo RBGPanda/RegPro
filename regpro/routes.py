@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from regpro import app, db
-from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm, ChangePermissions
+from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm, ChangePermissions, editCourseTime
 from regpro.models import User, Course, courses
 from flask_login import login_user, current_user, logout_user
 
@@ -100,10 +100,11 @@ def Instructor():
     user = currUser
     return render_template('Instructor.html', stu = user)
 
-@app.route('/InstructorClass')
+@app.route('/InstructorClass', methods=['GET', 'POST'])
 def InstructorClass(): 
+    form = editCourseTime()
     user = currUser
-    return render_template('InstructorClass.html', stu = user)
+    return render_template('InstructorClass.html', stu = user, form=form)
 
 
 @app.route('/Advisor')

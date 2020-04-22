@@ -21,4 +21,28 @@
 <p>Ability to change class size and time for the class and see full detail of the class</p>
 
 </div>
+
+
+
+<div style="padding-top:20%;">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.coursename.label() }}
+        {{ form.coursename() }}
+    </div>
+    <div>
+        <p>
+            NewTime: 
+        {{ form.newday.label() }}
+        {{ form.newday() }}
+        {{ form.newtime.label() }}
+        {{ form.newtime() }}
+        </p>
+        {{ form.submit() }}
+    </div>
+    <div style="padding-top:1%;">
+        <p>Jin Whatever you want in here </p>
+    </div>
+
+</div>
 {% endblock content %}
