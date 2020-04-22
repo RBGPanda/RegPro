@@ -91,33 +91,23 @@ def logout():
     logout_user()
     return render_template('home.html')
 
-
-currUser = None
-
-
 @app.route('/instructor')
-def Instructor():
-    user = currUser
-    return render_template('instructor.html', stu = user)
+def instructor():
+    return render_template('instructor.html')
 
 @app.route('/instructorClass')
-def InstructorClass(): 
-    form = editCourseTime()
-    user = currUser
-    return render_template('instructorClass.html', stu = user, form=form)
-
+def instructorClass(): 
+    editClassTime = editCourseTime()
+    return render_template('instructorClass.html', form=editClassTime)
 
 @app.route('/advisor')
-def Advisor():
-    user = currUser
-    return render_template('advisor.html', stu = user)
+def advisor():
+    return render_template('advisor.html')
 
 @app.route('/advisorStudent')
-def AdvisorStudent():
-    user = currUser
-    return render_template('advisorStudent.html', stu = user)
+def advisorStudent():
+    return render_template('advisorStudent.html')
 
 @app.route('/admin')
-def Admin():
-    user = currUser
-    return render_template('admin.html', stu = user)
+def admin():
+    return render_template('admin.html')
