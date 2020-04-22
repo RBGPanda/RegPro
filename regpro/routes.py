@@ -93,21 +93,21 @@ def logout():
 
 @app.route('/instructor')
 def instructor():
-    return render_template('Instructor.html')
+    return render_template('instructor.html')
 
 @app.route('/instructorClass')
 def instructorClass(): 
     form = editCourseTime()
-    return render_template('InstructorClass.html')
+    return render_template('instructorClass.html')
 
 @app.route('/advisor')
 def advisor():
-    return render_template('Advisor.html')
+    return render_template('advisor.html')
 
 @app.route('/advisorStudent')
 def advisorStudent():
-    return render_template('AdvisorStudent.html')
+    return render_template('advisorStudent.html')
 
 @app.route('/admin')
 def admin():
-    return render_template('Admin.html')
+    return render_template('admin.html')
