@@ -72,4 +72,16 @@ class CourseRegistrationForm(FlaskForm):
     drop = SubmitField("Drop")
 
 
+class editCourseTime(FlaskForm):
+    
+    coursename = StringField("Course Name", validators=[DataRequired()])
+
+    newday = StringField("Days", validators=[DataRequired()])
+
+    newtime = StringField("Times", validators=[DataRequired()])
+
+    submit = SubmitField("Submit")
+
+
+
 
