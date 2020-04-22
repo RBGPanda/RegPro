@@ -74,7 +74,7 @@ class CourseRegistrationForm(FlaskForm):
 
 class editCourseTime(FlaskForm):
     
-    coursename = StringField("Course Name", validators=[DataRequired()])
+    crn = StringField("CRN", validators=[DataRequired()])
 
     newday = StringField("Days", validators=[DataRequired()])
 
