@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from regpro import app, db
-from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm, ChangePermissions
+from regpro.forms import RegistrationForm, LoginForm, CourseRegistrationForm, ChangePermissions, editCourseTime
 from regpro.models import User, Course, courses
 from flask_login import login_user, current_user, logout_user
 
@@ -98,25 +98,26 @@ currUser = None
 @app.route('/instructor')
 def Instructor():
     user = currUser
-    return render_template('Instructor.html', stu = user)
+    return render_template('instructor.html', stu = user)
 
 @app.route('/instructorClass')
 def InstructorClass(): 
+    form = editCourseTime()
     user = currUser
-    return render_template('InstructorClass.html', stu = user)
+    return render_template('instructorClass.html', stu = user, form=form)
 
 
 @app.route('/advisor')
 def Advisor():
     user = currUser
-    return render_template('Advisor.html', stu = user)
+    return render_template('advisor.html', stu = user)
 
 @app.route('/advisorStudent')
 def AdvisorStudent():
     user = currUser
-    return render_template('AdvisorStudent.html', stu = user)
+    return render_template('advisorStudent.html', stu = user)
 
 @app.route('/admin')
 def Admin():
     user = currUser
-    return render_template('Admin.html', stu = user)
+    return render_template('admin.html', stu = user)
