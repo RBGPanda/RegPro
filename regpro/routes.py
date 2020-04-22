@@ -98,30 +98,26 @@ currUser = None
 @app.route('/instructor')
 def Instructor():
     user = currUser
-    return render_template('Instructor.html', stu = user)
+    return render_template('instructor.html', stu = user)
 
-<<<<<<< HEAD
-@app.route('/InstructorClass', methods=['GET', 'POST'])
-=======
 @app.route('/instructorClass')
->>>>>>> upstream/master
 def InstructorClass(): 
     form = editCourseTime()
     user = currUser
-    return render_template('InstructorClass.html', stu = user, form=form)
+    return render_template('instructorClass.html', stu = user, form=form)
 
 
 @app.route('/advisor')
 def Advisor():
     user = currUser
-    return render_template('Advisor.html', stu = user)
+    return render_template('advisor.html', stu = user)
 
 @app.route('/advisorStudent')
 def AdvisorStudent():
     user = currUser
-    return render_template('AdvisorStudent.html', stu = user)
+    return render_template('advisorStudent.html', stu = user)
 
 @app.route('/admin')
 def Admin():
     user = currUser
-    return render_template('Admin.html', stu = user)
+    return render_template('admin.html', stu = user)
