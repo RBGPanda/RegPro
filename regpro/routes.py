@@ -91,32 +91,22 @@ def logout():
     logout_user()
     return render_template('home.html')
 
-
-currUser = None
-
-
 @app.route('/instructor')
-def Instructor():
-    user = currUser
-    return render_template('Instructor.html', stu = user)
+def instructor():
+    return render_template('Instructor.html')
 
 @app.route('/instructorClass')
-def InstructorClass(): 
-    user = currUser
-    return render_template('InstructorClass.html', stu = user)
-
+def instructorClass(): 
+    return render_template('InstructorClass.html')
 
 @app.route('/advisor')
-def Advisor():
-    user = currUser
-    return render_template('Advisor.html', stu = user)
+def advisor():
+    return render_template('Advisor.html')
 
 @app.route('/advisorStudent')
-def AdvisorStudent():
-    user = currUser
-    return render_template('AdvisorStudent.html', stu = user)
+def advisorStudent():
+    return render_template('AdvisorStudent.html')
 
 @app.route('/admin')
-def Admin():
-    user = currUser
-    return render_template('Admin.html', stu = user)
+def admin():
+    return render_template('Admin.html')
