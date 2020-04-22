@@ -95,10 +95,11 @@ def logout():
 def instructor():
     return render_template('instructor.html')
 
-@app.route('/instructorClass')
+@app.route('/instructorClass', methods=['GET', 'POST'])
 def instructorClass(): 
-    editClassTime = editCourseTime()
-    return render_template('instructorClass.html', form=editClassTime)
+    form = editCourseTime()
+    courses = Course.query.all()
+    return render_template('instructorClass.html', page='edit-class', form=form, courses=courses)
 
 @app.route('/advisor')
 def advisor():

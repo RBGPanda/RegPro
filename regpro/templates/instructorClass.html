@@ -15,6 +15,13 @@
 {% endblock nav %}
 
 {% block content %}
+<h1 style="margin-top: 2rem; margin-top: 6rem;">All Courses</h1>
+<div style="overflow: scroll; background-color: lightgray;">
+    <strong>Course (CRN) | Timeslot</strong>
+    {% for course in courses %}
+        <p>{{ course.title }} ({{ course.crn }}) | {{ course.days }}@{{ course.time }}</p><br>
+    {% endfor %}
+</div>
 <!-- Student schedule-->
 <div>
 
@@ -27,8 +34,8 @@
 <div style="padding-top:20%;">
     {{ form.hidden_tag() }}
     <div>
-        {{ form.coursename.label() }}
-        {{ form.coursename() }}
+        {{ form.crn.label() }}
+        {{ form.crn() }}
     </div>
     <div>
         <p>
